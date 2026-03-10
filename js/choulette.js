@@ -7,9 +7,9 @@ const CONFIG = {
   mainBottleModel: "./assets/brune.glb",
 
   mainBottleScale: {
-    desktop: 0.5,
-    tablet: 0.8,
-    mobile: 0.65
+    desktop: 0.45,
+    tablet: 0.4,
+    mobile: 0.4
   },
 
   sectionColors: [
@@ -21,29 +21,29 @@ const CONFIG = {
 
   poses: {
     desktop: [
-      { bottleX: 1.25, bottleY: -1.05, bottleZ: 0.15, rotY: 1.2, rotZ: -0.06, camY: 0.15, camZ: 6.5 },
+      { bottleX: 1.25, bottleY: -1.05, bottleZ: 0.15, rotY: 0, rotZ: 0, camY: 0.15, camZ: 6.5 },
       { bottleX: 0.45, bottleY: -1.08, bottleZ: 0.08, rotY: 0.08, rotZ: 0.0, camY: 0.03, camZ: 5.5 },
       { bottleX: 0.05, bottleY: -1.12, bottleZ: 0.0, rotY: -0.15, rotZ: 0.03, camY: -0.03, camZ: 5.2 },
       { bottleX: 1.15, bottleY: -1.32, bottleZ: 0.0, rotY: 0.0, rotZ: 0.0, camY: -0.06, camZ: 6.6 }
     ],
     tablet: [
-      { bottleX: 1.0, bottleY: -1.1, bottleZ: 0.12, rotY: 1.15, rotZ: -0.05, camY: 0.12, camZ: 6.8 },
-      { bottleX: 0.35, bottleY: -1.15, bottleZ: 0.06, rotY: 0.08, rotZ: 0.0, camY: 0.02, camZ: 5.9 },
+      { bottleX: 1.0, bottleY: -1.1, bottleZ: 0.12, rotY: 1.15, rotZ: 0, camY: 0.12, camZ: 6.8 },
+      { bottleX: 0.35, bottleY: -1, bottleZ: 0.06, rotY: 0.08, rotZ: 0.0, camY: 0.02, camZ: 5.9 },
       { bottleX: 0.0, bottleY: -1.18, bottleZ: 0.0, rotY: -0.12, rotZ: 0.02, camY: -0.03, camZ: 5.6 },
       { bottleX: 0.9, bottleY: -1.35, bottleZ: 0.0, rotY: 0.0, rotZ: 0.0, camY: -0.05, camZ: 6.8 }
     ],
     mobile: [
-      { bottleX: 0.8, bottleY: -1.2, bottleZ: 0.1, rotY: 1.1, rotZ: -0.04, camY: 0.08, camZ: 7.2 },
-      { bottleX: 0.2, bottleY: -1.25, bottleZ: 0.05, rotY: 0.05, rotZ: 0.0, camY: 0.01, camZ: 6.4 },
+      { bottleX: 0, bottleY: -0.8, bottleZ: 0.1, rotY: 0.2, rotZ: 0, camY: 0.08, camZ: 7.2 },
+      { bottleX: 0.2, bottleY: -1.4, bottleZ: 0, rotY: 3.2, rotZ: 0, camY: 0.01, camZ: 6.4 },
       { bottleX: -0.05, bottleY: -1.28, bottleZ: 0.0, rotY: -0.1, rotZ: 0.02, camY: -0.02, camZ: 6.0 },
       { bottleX: 0.55, bottleY: -1.4, bottleZ: 0.0, rotY: 0.0, rotZ: 0.0, camY: -0.04, camZ: 7.0 }
     ]
   },
 
   finalBottles: [
-    { containerId: "card-blanche", model: "./assets/blanche.glb", scale: 0.82, y: -1.05, z: 0, speed: 0.006, startRotY: 0.4 },
-    { containerId: "card-blonde", model: "./assets/blonde.glb", scale: 0.88, y: -1.08, z: 0, speed: 0.011, startRotY: 1.1 },
-    { containerId: "card-ambree", model: "./assets/brune.glb", scale: 0.92, y: -1.1, z: 0, speed: 0.008, startRotY: -0.6 }
+    { containerId: "card-blanche", model: "./assets/blanche.glb", scale: 0.4, y: -1.05, z: 0, speed: 0.006, startRotY: 0.4 },
+    { containerId: "card-blonde", model: "./assets/blonde.glb", scale: 0.4, y: -1.08, z: 0, speed: 0.011, startRotY: 1.1 },
+    { containerId: "card-ambree", model: "./assets/brune.glb", scale: 0.4, y: -1.1, z: 0, speed: 0.008, startRotY: -0.6 }
   ]
 };
 
