@@ -3,59 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La Choulette</title>
-
-  <link rel="stylesheet" href="style.css" />
-
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com/three@0.160.1/build/three.module.js",
-      "three/addons/": "https://unpkg.com/three@0.160.1/examples/jsm/"
-    }
-  }
-  </script>
+  <title>UIS & Amicale - Accueil</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <canvas id="webgl"></canvas>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">UIS & Amicale</a>
 
-  <section class="panel hero">
-    <div class="content">
-      <h1>La Choulette</h1>
-      <p>
-        Une bière blanche artisanale du Nord, présentée dans une expérience
-        immersive en 3D.
-      </p>
+      <nav class="desktop-nav" aria-label="Navigation principale">
+        <a href="choulette.html" class="nav-link">Choulette</a>
+        <a href="produits.html" class="nav-link">Nos autres produits</a>
+        <a href="commande.html" class="nav-link">Formulaire de demande</a>
+      </nav>
+
+      <button
+        class="burger"
+        id="burgerBtn"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-  </section>
 
-  <section class="panel">
-    <div class="content">
-      <h2>Un savoir-faire brassicole</h2>
-      <p>
-        En descendant dans la page, la bouteille se déplace, tourne sur elle-même
-        et la caméra évolue pour créer une présentation dynamique.
-      </p>
-    </div>
-  </section>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Navigation mobile">
+      <a href="choulette.html" class="mobile-link">Choulette</a>
+      <a href="produits.html" class="mobile-link">Nos autres produits</a>
+      <a href="commande.html" class="mobile-link">Formulaire de demande</a>
+    </nav>
+  </header>
 
-  <section class="panel">
-    <div class="content">
-      <h2>Une identité visuelle forte</h2>
-      <p>
-        Le modèle 3D permet de mettre en avant l’étiquette, la forme de la bouteille
-        et l’univers de la marque.
-      </p>
-    </div>
-  </section>
+  <main class="standard-page home-page">
+    <section class="hero-simple hero-home">
+      <div class="hero-copy glass-panel">
+        <span class="eyebrow">Bienvenue</span>
+        <h1>UIS & Amicale de l’UIS</h1>
+        <p>
+          Ce site présente l’univers de l’UIS, l’amicale, ainsi qu’une mise en avant
+          immersive de La Choulette et des autres produits.
+        </p>
+        <div class="hero-actions">
+          <a href="choulette.html" class="btn-primary">Découvrir La Choulette</a>
+          <a href="commande.html" class="btn-secondary">Faire une demande</a>
+        </div>
+      </div>
+    </section>
 
-  <section class="panel">
-    <div class="content">
-      <h2>La Choulette</h2>
-      <p>Une page produit moderne, fluide et adaptée à tous les écrans.</p>
-    </div>
-  </section>
+    <section class="content-section two-cols">
+      <article class="glass-panel">
+        <span class="eyebrow">Présentation</span>
+        <h2>L’UIS</h2>
+        <p>
+          Cette page d’accueil sert d’entrée au site. Elle peut présenter l’histoire,
+          les valeurs, les membres, les activités et la mission de l’UIS.
+        </p>
+        <p>
+          Tu peux ensuite enrichir cette partie avec des photos, un historique,
+          des événements, ou des documents utiles.
+        </p>
+      </article>
 
-  <script type="module" src="./script.js"></script>
+      <article class="glass-panel">
+        <span class="eyebrow">Vie associative</span>
+        <h2>L’Amicale de l’UIS</h2>
+        <p>
+          Cette section peut mettre en avant la convivialité, les événements,
+          les projets communs, les traditions et les temps forts de l’amicale.
+        </p>
+        <p>
+          Elle peut aussi servir de porte d’entrée vers les produits, les demandes
+          et la présentation de La Choulette.
+        </p>
+      </article>
+    </section>
+
+    <section class="content-section single-col">
+      <div class="glass-panel centered-panel">
+        <span class="eyebrow">Navigation rapide</span>
+        <h2>Explorer le site</h2>
+        <div class="feature-grid">
+          <a class="feature-card" href="choulette.html">
+            <h3>Présentation de La Choulette</h3>
+            <p>Une page immersive avec animation 3D et storytelling au scroll.</p>
+          </a>
+          <a class="feature-card" href="produits.html">
+            <h3>Nos autres produits</h3>
+            <p>Découvrir le reste de la gamme et les différentes références.</p>
+          </a>
+          <a class="feature-card" href="commande.html">
+            <h3>Formulaire de demande</h3>
+            <p>Envoyer une demande d’information, de contact ou de commande.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>By Parkaf - V1.00 - 10/03/2026</p>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

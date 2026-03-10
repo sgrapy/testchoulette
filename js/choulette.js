@@ -3,179 +3,49 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 const canvas = document.getElementById("webgl");
 
-/* =========================================================
-   CONFIG
-========================================================= */
-
 const CONFIG = {
-  mainBottleModel: "./brune.glb",
+  mainBottleModel: "./assets/brune.glb",
 
   mainBottleScale: {
-    desktop: 0.95,
+    desktop: 0.5,
     tablet: 0.8,
     mobile: 0.65
   },
 
   sectionColors: [
-    "#1b263b", // arrêt 1
-    "#4a2c2a", // arrêt 2
-    "#23395b", // arrêt 3
-    "#5a3a22"  // arrêt 4
+    "#14233a",
+    "#4e2d1d",
+    "#1d3557",
+    "#6b4123"
   ],
 
   poses: {
     desktop: [
-      {
-        bottleX: 1.25,
-        bottleY: -1.05,
-        bottleZ: 0.15,
-        rotY: 1.2,
-        rotZ: -0.06,
-        camY: 0.15,
-        camZ: 6.5
-      },
-      {
-        bottleX: 0.45,
-        bottleY: -1.08,
-        bottleZ: 0.08,
-        rotY: 0.08,
-        rotZ: 0.0,
-        camY: 0.03,
-        camZ: 5.5
-      },
-      {
-        bottleX: 0.05,
-        bottleY: -1.12,
-        bottleZ: 0.0,
-        rotY: -0.15,
-        rotZ: 0.03,
-        camY: -0.03,
-        camZ: 5.2
-      },
-      {
-        bottleX: 1.15,
-        bottleY: -1.32,
-        bottleZ: 0.0,
-        rotY: 0.0,
-        rotZ: 0.0,
-        camY: -0.06,
-        camZ: 6.6
-      }
+      { bottleX: 1.25, bottleY: -1.05, bottleZ: 0.15, rotY: 1.2, rotZ: -0.06, camY: 0.15, camZ: 6.5 },
+      { bottleX: 0.45, bottleY: -1.08, bottleZ: 0.08, rotY: 0.08, rotZ: 0.0, camY: 0.03, camZ: 5.5 },
+      { bottleX: 0.05, bottleY: -1.12, bottleZ: 0.0, rotY: -0.15, rotZ: 0.03, camY: -0.03, camZ: 5.2 },
+      { bottleX: 1.15, bottleY: -1.32, bottleZ: 0.0, rotY: 0.0, rotZ: 0.0, camY: -0.06, camZ: 6.6 }
     ],
-
     tablet: [
-      {
-        bottleX: 1.0,
-        bottleY: -1.1,
-        bottleZ: 0.12,
-        rotY: 1.15,
-        rotZ: -0.05,
-        camY: 0.12,
-        camZ: 6.8
-      },
-      {
-        bottleX: 0.35,
-        bottleY: -1.15,
-        bottleZ: 0.06,
-        rotY: 0.08,
-        rotZ: 0.0,
-        camY: 0.02,
-        camZ: 5.9
-      },
-      {
-        bottleX: 0.0,
-        bottleY: -1.18,
-        bottleZ: 0.0,
-        rotY: -0.12,
-        rotZ: 0.02,
-        camY: -0.03,
-        camZ: 5.6
-      },
-      {
-        bottleX: 0.9,
-        bottleY: -1.35,
-        bottleZ: 0.0,
-        rotY: 0.0,
-        rotZ: 0.0,
-        camY: -0.05,
-        camZ: 6.8
-      }
+      { bottleX: 1.0, bottleY: -1.1, bottleZ: 0.12, rotY: 1.15, rotZ: -0.05, camY: 0.12, camZ: 6.8 },
+      { bottleX: 0.35, bottleY: -1.15, bottleZ: 0.06, rotY: 0.08, rotZ: 0.0, camY: 0.02, camZ: 5.9 },
+      { bottleX: 0.0, bottleY: -1.18, bottleZ: 0.0, rotY: -0.12, rotZ: 0.02, camY: -0.03, camZ: 5.6 },
+      { bottleX: 0.9, bottleY: -1.35, bottleZ: 0.0, rotY: 0.0, rotZ: 0.0, camY: -0.05, camZ: 6.8 }
     ],
-
     mobile: [
-      {
-        bottleX: 0.8,
-        bottleY: -1.2,
-        bottleZ: 0.1,
-        rotY: 1.1,
-        rotZ: -0.04,
-        camY: 0.08,
-        camZ: 7.2
-      },
-      {
-        bottleX: 0.2,
-        bottleY: -1.25,
-        bottleZ: 0.05,
-        rotY: 0.05,
-        rotZ: 0.0,
-        camY: 0.01,
-        camZ: 6.4
-      },
-      {
-        bottleX: -0.05,
-        bottleY: -1.28,
-        bottleZ: 0.0,
-        rotY: -0.1,
-        rotZ: 0.02,
-        camY: -0.02,
-        camZ: 6.0
-      },
-      {
-        bottleX: 0.55,
-        bottleY: -1.4,
-        bottleZ: 0.0,
-        rotY: 0.0,
-        rotZ: 0.0,
-        camY: -0.04,
-        camZ: 7.0
-      }
+      { bottleX: 0.8, bottleY: -1.2, bottleZ: 0.1, rotY: 1.1, rotZ: -0.04, camY: 0.08, camZ: 7.2 },
+      { bottleX: 0.2, bottleY: -1.25, bottleZ: 0.05, rotY: 0.05, rotZ: 0.0, camY: 0.01, camZ: 6.4 },
+      { bottleX: -0.05, bottleY: -1.28, bottleZ: 0.0, rotY: -0.1, rotZ: 0.02, camY: -0.02, camZ: 6.0 },
+      { bottleX: 0.55, bottleY: -1.4, bottleZ: 0.0, rotY: 0.0, rotZ: 0.0, camY: -0.04, camZ: 7.0 }
     ]
   },
 
   finalBottles: [
-    {
-      containerId: "card-blanche",
-      model: "./blanche.glb",
-      scale: 0.4,
-      y: -1.3,
-      z: 0,
-      speed: 0.006,
-      startRotY: 0.4
-    },
-    {
-      containerId: "card-blonde",
-      model: "./blonde.glb",
-      scale: 0.4,
-      y: -1.3,
-      z: 0,
-      speed: 0.011,
-      startRotY: 1.1
-    },
-    {
-      containerId: "card-ambree",
-      model: "./brune.glb",
-      scale: 0.4,
-      y: -1.3,
-      z: 0,
-      speed: 0.008,
-      startRotY: -0.6
-    }
+    { containerId: "card-blanche", model: "./assets/blanche.glb", scale: 0.82, y: -1.05, z: 0, speed: 0.006, startRotY: 0.4 },
+    { containerId: "card-blonde", model: "./assets/blonde.glb", scale: 0.88, y: -1.08, z: 0, speed: 0.011, startRotY: 1.1 },
+    { containerId: "card-ambree", model: "./assets/brune.glb", scale: 0.92, y: -1.1, z: 0, speed: 0.008, startRotY: -0.6 }
   ]
 };
-
-/* =========================================================
-   HELPERS RESPONSIVE
-========================================================= */
 
 function getDeviceType() {
   const w = window.innerWidth;
@@ -185,18 +55,12 @@ function getDeviceType() {
 }
 
 function getMainBottleScale() {
-  const device = getDeviceType();
-  return CONFIG.mainBottleScale[device];
+  return CONFIG.mainBottleScale[getDeviceType()];
 }
 
 function getPoses() {
-  const device = getDeviceType();
-  return CONFIG.poses[device];
+  return CONFIG.poses[getDeviceType()];
 }
-
-/* =========================================================
-   SCENE
-========================================================= */
 
 const scene = new THREE.Scene();
 
@@ -216,10 +80,6 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-/* =========================================================
-   LIGHTS - STYLE PUB BIÈRE
-========================================================= */
-
 const ambient = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambient);
 
@@ -235,12 +95,7 @@ const bottomLight = new THREE.PointLight(0xffb84d, 1.5);
 bottomLight.position.set(0, -2, 2);
 scene.add(bottomLight);
 
-/* =========================================================
-   BACKGROUND COLOR SYSTEM
-========================================================= */
-
 scene.background = new THREE.Color(CONFIG.sectionColors[0]);
-
 const bgCurrentColor = new THREE.Color(CONFIG.sectionColors[0]);
 const bgTargetColor = new THREE.Color(CONFIG.sectionColors[0]);
 
@@ -259,13 +114,9 @@ function setBackgroundColorByProgress(progress) {
   scene.background = bgCurrentColor;
 }
 
-/* =========================================================
-   LOADER + MAIN BOTTLE
-========================================================= */
-
 const loader = new GLTFLoader();
-
 let mainBottle = null;
+let poses = getPoses();
 
 loader.load(
   CONFIG.mainBottleModel,
@@ -279,12 +130,6 @@ loader.load(
     console.error("Erreur chargement bouteille principale :", error);
   }
 );
-
-/* =========================================================
-   SCROLL + POSES
-========================================================= */
-
-let poses = getPoses();
 
 function getScrollProgress() {
   const maxScroll = document.body.scrollHeight - window.innerHeight;
@@ -310,19 +155,6 @@ function lerpPose(a, b, t) {
   };
 }
 
-/*
-Timeline
-0.00 -> 0.16 transition 1 -> 2
-0.16 -> 0.32 pause 2
-
-0.32 -> 0.48 transition 2 -> 3
-0.48 -> 0.62 pause 3
-
-0.62 -> 0.76 transition 3 -> 4
-0.76 -> 0.88 pause 4
-
-0.88 -> 1.00 final cards
-*/
 function getCurrentPose(progress) {
   if (progress < 0.16) {
     const t = easeInOut(progress / 0.16);
@@ -350,10 +182,6 @@ function getCurrentPose(progress) {
   return poses[3];
 }
 
-/* =========================================================
-   FINAL CARDS
-========================================================= */
-
 const cards = document.querySelectorAll(".flavor-card");
 
 function updateCards(progress) {
@@ -369,10 +197,6 @@ function updateCards(progress) {
     }
   });
 }
-
-/* =========================================================
-   MINI BOTTLES
-========================================================= */
 
 const miniScenes = [];
 
@@ -434,10 +258,6 @@ function createMiniBottle(config) {
 
 CONFIG.finalBottles.forEach(createMiniBottle);
 
-/* =========================================================
-   ANIMATION
-========================================================= */
-
 function animate() {
   requestAnimationFrame(animate);
 
@@ -474,10 +294,6 @@ function animate() {
 
 animate();
 
-/* =========================================================
-   RESIZE
-========================================================= */
-
 window.addEventListener("resize", () => {
   poses = getPoses();
 
@@ -501,59 +317,3 @@ window.addEventListener("resize", () => {
     mini.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   });
 });
-
-/* =========================================================
-   HEADER / BURGER MENU
-========================================================= */
-
-const burgerBtn = document.getElementById("burgerBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-const mobileLinks = document.querySelectorAll(".mobile-link");
-const navLinks = document.querySelectorAll(".nav-link");
-
-if (burgerBtn && mobileMenu) {
-  burgerBtn.addEventListener("click", () => {
-    const isOpen = mobileMenu.classList.toggle("open");
-    burgerBtn.classList.toggle("open", isOpen);
-    burgerBtn.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  mobileLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.remove("open");
-      burgerBtn.classList.remove("open");
-      burgerBtn.setAttribute("aria-expanded", "false");
-    });
-  });
-}
-
-/* =========================================================
-   ACTIVE LINK AU SCROLL
-========================================================= */
-
-const sectionsForNav = [
-  document.getElementById("page-choulette"),
-  document.getElementById("page-produits"),
-  document.getElementById("page-commande")
-];
-
-function updateActiveNav() {
-  let activeIndex = 0;
-  const trigger = window.innerHeight * 0.35;
-
-  sectionsForNav.forEach((section, index) => {
-    if (!section) return;
-    const rect = section.getBoundingClientRect();
-    if (rect.top <= trigger) {
-      activeIndex = index;
-    }
-  });
-
-  navLinks.forEach((link, index) => {
-    link.classList.toggle("active", index === activeIndex);
-  });
-}
-
-window.addEventListener("scroll", updateActiveNav);
-updateActiveNav();
-
