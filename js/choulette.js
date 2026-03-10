@@ -21,22 +21,22 @@ const CONFIG = {
 
   poses: {
     desktop: [
-      { bottleX: 1.25, bottleY: -1.05, bottleZ: 0.15, rotY: 0, rotZ: 0, camY: 0.15, camZ: 6.5 },
-      { bottleX: 0.45, bottleY: -1.08, bottleZ: 0.08, rotY: 0.08, rotZ: 0.0, camY: 0.03, camZ: 5.5 },
+      { bottleX: 0.75, bottleY: -1.05, bottleZ: 0, rotY: -0.2, rotZ: 0, camY: 0.15, camZ: 3 },
+      { bottleX: 0.45, bottleY: -1.08, bottleZ: 0.08, rotY: 2.9, rotZ: 0.0, camY: 0.03, camZ: 5.5 },
       { bottleX: 0.05, bottleY: -1.12, bottleZ: 0.0, rotY: -0.15, rotZ: 0.03, camY: -0.03, camZ: 5.2 },
       { bottleX: 1.15, bottleY: -1.32, bottleZ: 0.0, rotY: 0.0, rotZ: 0.0, camY: -0.06, camZ: 6.6 }
     ],
     tablet: [
-      { bottleX: 1.0, bottleY: -1.1, bottleZ: 0.12, rotY: 1.15, rotZ: 0, camY: 0.12, camZ: 6.8 },
+      { bottleX: 0.5, bottleY: -1.1, bottleZ: 0.12, rotY: 1.15, rotZ: 0, camY: 0.12, camZ: 6.8 },
       { bottleX: 0.35, bottleY: -1, bottleZ: 0.06, rotY: 0.08, rotZ: 0.0, camY: 0.02, camZ: 5.9 },
       { bottleX: 0.0, bottleY: -1.18, bottleZ: 0.0, rotY: -0.12, rotZ: 0.02, camY: -0.03, camZ: 5.6 },
       { bottleX: 0.9, bottleY: -1.35, bottleZ: 0.0, rotY: 0.0, rotZ: 0.0, camY: -0.05, camZ: 6.8 }
     ],
     mobile: [
-      { bottleX: 0, bottleY: -0.8, bottleZ: 0.1, rotY: 0.2, rotZ: 0, camY: 0.08, camZ: 7.2 },
+      { bottleX: 0.5, bottleY: -1.5, bottleZ: 0.1, rotY: 0.2, rotZ: 0, camY: 0.08, camZ: 4 },
       { bottleX: 0.2, bottleY: -1.4, bottleZ: 0, rotY: 3.2, rotZ: 0, camY: 0.01, camZ: 6.4 },
       { bottleX: -0.05, bottleY: -1.28, bottleZ: 0.0, rotY: -0.1, rotZ: 0.02, camY: -0.02, camZ: 6.0 },
-      { bottleX: 0.55, bottleY: -1.4, bottleZ: 0.0, rotY: 0.0, rotZ: 0.0, camY: -0.04, camZ: 7.0 }
+      { bottleX: -1.2, bottleY: -1.4, bottleZ: 0.0, rotY: 0.0, rotZ: 0.0, camY: -0.04, camZ: 10.0 }
     ]
   },
 
@@ -184,14 +184,27 @@ function getCurrentPose(progress) {
 
 const cards = document.querySelectorAll(".flavor-card");
 
+let cardsVisible = false;
+
 function updateCards(progress) {
-  const show = progress > 0.86;
+  const isMobile = window.innerWidth <= 640;
+
+  const showThreshold = isMobile ? 0.78 : 0.86;
+  const hideThreshold = isMobile ? 0.70 : 0.80;
+
+  if (!cardsVisible && progress >= showThreshold) {
+    cardsVisible = true;
+  }
+
+  if (cardsVisible && progress < hideThreshold) {
+    cardsVisible = false;
+  }
 
   cards.forEach((card, index) => {
-    if (show) {
+    if (cardsVisible) {
       setTimeout(() => {
         card.classList.add("show");
-      }, index * 120);
+      }, index * 140);
     } else {
       card.classList.remove("show");
     }
