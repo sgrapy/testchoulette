@@ -41,8 +41,8 @@ loader.load(
   (gltf) => {
     bottle = gltf.scene;
 
-    bottle.scale.set(1.8, 1.8, 1.8);
-    bottle.position.set(0, -1.0, 0);
+    bottle.scale.set(0.3, 0.3, 0.3);
+    bottle.position.set(3, 1, 0);
     bottle.rotation.set(0, 0, 0);
 
     scene.add(bottle);
@@ -66,7 +66,7 @@ function animate() {
   const p = getScrollProgress();
 
   if (bottle) {
-    bottle.position.x = THREE.MathUtils.lerp(-1.2, 1.0, p);
+    bottle.position.x = THREE.MathUtils.lerp(1, 1.0, p);
     bottle.position.y = THREE.MathUtils.lerp(-0.8, -1.4, p);
     bottle.rotation.y = p * Math.PI * 4;
     bottle.rotation.z = THREE.MathUtils.lerp(-0.08, 0.08, p);
